@@ -1,3 +1,9 @@
+
+kind: pipeline
+type: docker
+name: default
+
+steps:
 - name: dev-build
   pull: if-not-exists
   image: python:3.7
