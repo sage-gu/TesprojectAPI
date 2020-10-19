@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/sagegu/Documents/Appium/TestprojectMobilePy/env"
+VIRTUAL_ENV="/Users/sagegu/Documents/GitHub/sage/TesprojectAPI/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

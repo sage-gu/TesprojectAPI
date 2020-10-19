@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/sagegu/Documents/Appium/TestprojectMobilePy/env"
+set -gx VIRTUAL_ENV "/Users/sagegu/Documents/GitHub/sage/TesprojectAPI/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
