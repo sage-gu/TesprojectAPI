@@ -92,3 +92,7 @@ package_path = '/Users/sagegu/Desktop/1/per.ipa'
 version = '1.8.28.1'
 # upload("development", "iOS", package_path, version)
 upload("production", "iOS", package_path, version)
+
+
+print("Hello iHealth!")
+ 
