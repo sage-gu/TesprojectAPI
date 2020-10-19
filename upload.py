@@ -88,11 +88,11 @@ def uploadApplication(theId, env, os, package_path, file_name):
 
 # uploadApplication(appId_product_iOS, 'product ios', '/Users/sagegu/Desktop/1/personalAppRN.ipa', 'prod_ios.ipa')
 
-package_path = '/Users/sagegu/Desktop/1/per.ipa'
-version = '1.8.28.1'
-# upload("development", "iOS", package_path, version)
-upload("production", "iOS", package_path, version)
+# package_path = '/Users/sagegu/Desktop/1/per.ipa'
+# version = '1.8.28.1'
+# # upload("development", "iOS", package_path, version)
+# upload("production", "iOS", package_path, version)
 
 
-print("Hello iHealth!")
+print("Hello iHealth!") 
  
