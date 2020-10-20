@@ -12,7 +12,7 @@ steps:
  
   # - python upload.py
 #   - python -m compileall ./src
-  dockerfile: Dockerfile
+  dockerfile: Dockerfile.test
   when:
     event:
     - push
