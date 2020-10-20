@@ -1,6 +1,6 @@
 FROM python:3.7
 
-LABEL "Maintainer"="sagegu@ihealthlabs.com"
+LABEL "Maintainer"="sage.gu@ihealthlabs.com"
 LABEL "Version"="1.0"
 
 # RUN apt-get update
