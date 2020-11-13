@@ -3,8 +3,8 @@ FROM python:3.7
 LABEL "Maintainer"="sage.gu@ihealthlabs.com"
 LABEL "Version"="1.0"
 
-# RUN apt-get update
-# RUN apt-get -y install git vim curl
+RUN apt-get update
+RUN apt-get -y install git vim curl
 
 RUN mkdir -p /workspace
 WORKDIR /workspace/
