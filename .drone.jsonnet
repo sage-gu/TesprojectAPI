@@ -16,7 +16,7 @@ local publish(name, tag, when) = {
         }
     },
      commands: [
-        "echo ${DRONE_BRANCH}${DRONE_BUILD_EVENT}",
+        "echo branch: ${DRONE_BRANCH} - buildEvent: ${DRONE_BUILD_EVENT}",
         "python --version",
     ],
     when: when
