@@ -2,7 +2,7 @@
 local publish(name, tag, when) = {
     name: name,
     pull: "if-not-exists",
-    image:'ihealthlabs/test_image_sage:0.2',
+    image: "ubuntu:latest",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -21,6 +21,7 @@ local publish(name, tag, when) = {
         "echo DRONE_TARGET_BRANCH: ${DRONE_TARGET_BRANCH}",
         "echo DRONE_COMMIT: ${DRONE_COMMIT}",
         "node -v",
+        "apt-get update",
         "apt-get -y install curl",
         "curl 20.0.101.155:31743/cc/allprojects ",
         "curl baidu.com"
