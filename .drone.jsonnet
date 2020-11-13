@@ -2,7 +2,8 @@
 local publish(name, tag, when) = {
     name: name,
     pull: "if-not-exists",
-    image: "plugins/docker",
+    // image: "plugins/docker",
+    image:'ihealthlabs/test_image_sage:0.2',
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
