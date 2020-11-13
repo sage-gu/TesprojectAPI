@@ -17,6 +17,9 @@ local publish(name, tag, when) = {
     },
      commands: [
         "echo branch: ${DRONE_BRANCH} - buildEvent: ${DRONE_BUILD_EVENT}",
+        "echo Provides the target branch for the push or pull request DRONE_COMMIT_BRANCH: ${DRONE_COMMIT_BRANCH} - DRONE_SOURCE_BRANCH: ${DRONE_SOURCE_BRANCH}",
+        "echo DRONE_TARGET_BRANCH: ${DRONE_TARGET_BRANCH}",
+        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
         "python --version",
     ],
     when: when
