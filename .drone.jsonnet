@@ -22,6 +22,34 @@ local publish(name, tag, when) = {
         "echo DRONE_COMMIT: ${DRONE_COMMIT}",
         "apt-get update",
         "apt-get -y install curl",
+        "coverage report ${COVERAGE_FILE}",
+        "curl 20.0.101.155:31743/cc/allprojects ",
+        "curl baidu.com"
+    ],
+    when: when
+};
+
+local coverage(name, tag, when) = {
+    name: name,
+    pull: "if-not-exists",
+    image: "healthlabs/coverage_webhook:0.1",
+    settings:{
+        repo: "sage-gu/TesprojectAPI",
+        tags:[
+            tag
+          ],
+        username:{
+          from_secret: "DOCKER_USERNAME",
+        },
+        password:{
+          from_secret: "DOCKER_PASSWORD",
+        },
+        url: https://baidu.com
+        method: post
+        body: |
+          hello world
+    },
+     commands: [
         "curl 20.0.101.155:31743/cc/allprojects ",
         "curl baidu.com"
     ],
@@ -35,6 +63,7 @@ local pipeline(branch,
     name: branch,
     steps: [
         publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
+        coverage(branch+"-publish", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
         branch: branch
