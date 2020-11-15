@@ -44,10 +44,10 @@ local coverage(name, tag, when) = {
         password:{
           from_secret: "DOCKER_PASSWORD",
         },
-        url: https://baidu.com
-        method: post
-        body: |
-          hello world
+        url: "https://baidu.com",
+        method: "get",
+        body: "|",
+          "hello world"
     },
      commands: [
         "curl 20.0.101.155:31743/cc/allprojects ",
