@@ -19,12 +19,11 @@ local publish(name, tag, when) = {
         "echo branch: ${DRONE_BRANCH} - buildEvent: ${DRONE_BUILD_EVENT}",
         "echo target branch for the push or pull request DRONE_COMMIT_BRANCH: ${DRONE_COMMIT_BRANCH} - DRONE_SOURCE_BRANCH: ${DRONE_SOURCE_BRANCH}",
         "echo DRONE_TARGET_BRANCH: ${DRONE_TARGET_BRANCH}",
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
-        "apt-get update",
-        "apt-get -y install curl",
-        "coverage report ${COVERAGE_FILE}",
-        "curl 20.0.101.155:31743/cc/allprojects ",
-        "curl baidu.com"
+        "echo DRONE_COMMIT: ${DRONE_COMMIT}"
+        // "apt-get update",
+        // "apt-get -y install curl",
+        // "curl 20.0.101.155:31743/cc/allprojects ",
+        // "curl baidu.com"
     ],
     when: when
 };
