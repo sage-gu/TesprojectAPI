@@ -46,8 +46,7 @@ local coverage(name, tag, when) = {
         },
         url: "https://baidu.com",
         method: "get",
-        body: "|",
-          "hello world"
+        body: "| hello world"
     },
      commands: [
         "curl 20.0.101.155:31743/cc/allprojects ",
