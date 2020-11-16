@@ -48,10 +48,7 @@ local coverage(name, tag, when) = {
         PLUGIN_METHOD: "get"
     },
     environment:{
-      A_NAME: "https://baidu.com",
-      BASE_BRANCH:"hello",
-      PLUGIN_METHOD: "get",
-      "COVERAGE_COLLECTOR_URL": {
+      COVERAGE_COLLECTOR_URL: {
         from_secret: "COVERAGE_COLLECTOR_URL",
       },
     },
