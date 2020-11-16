@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.2",
+    image: "ihealthlabs/coverage_webhook:0.3",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -45,7 +45,10 @@ local coverage(name, tag, when) = {
         },
         A_NAME: "https://baidu.com",
         PLUGIN_BODY:"hello",
-        PLUGIN_METHOD: "get"
+        PLUGIN_METHOD: "get",
+        COVERAGE_COLLECTOR_URL: {
+          from_secret: "COVERAGE_COLLECTOR_URL",
+        },
     },
     environment:{
       A_NAME: "https://baidu.com",
@@ -53,7 +56,7 @@ local coverage(name, tag, when) = {
       PLUGIN_METHOD: "get"
     },
      commands: [
-        "echo A_NAME: ${A_NAME}",
+        "echo COVERAGE_COLLECTOR_URL: ${COVERAGE_COLLECTOR_URL}",
         "echo PROJECT_NAME: ${PROJECT_NAME}",
         "export PROJECT_NAME=${DRONE_REPO}",
          "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
@@ -70,6 +73,20 @@ local coverage(name, tag, when) = {
     when: when
 };
 
+local Comments(name, message, when) = {
+    name: name,
+    image: "ihealthlabs/test_image:drone-github-comment-1.0",
+    pull: "always",
+    environment:{
+        "PLUGIN_API_KEY": 
+        {
+            from_secret: "APIKEY"
+        },
+        "PLUGIN_MESSAGE": "/bin/coverage.svg",//message
+    },
+    when: when
+};
+
 local pipeline(branch,
                namespace, tag, instance) = {
     kind: 'pipeline',
@@ -78,6 +95,7 @@ local pipeline(branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
+        Comments(branch+"-comment", tag, {instance: instance, event: ["push"]})
     ],
     trigger:{
         branch: branch
