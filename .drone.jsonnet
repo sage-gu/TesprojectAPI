@@ -42,10 +42,10 @@ local coverage(name, tag, when) = {
         },
         password:{
           from_secret: "DOCKER_PASSWORD",
-        }
-        // url: "https://baidu.com",
-        // method: "get",
-        // body: "| hello world"
+        },
+        PLUGIN_URL: "https://baidu.com",
+      PLUGIN_BODY:"hello",
+      PLUGIN_METHOD: "get"
     },
     environment:{
       PLUGIN_URL: "https://baidu.com",
