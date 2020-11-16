@@ -53,7 +53,8 @@ local coverage(name, tag, when) = {
       PLUGIN_METHOD: "get"
     },
      commands: [
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}"
+        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
+        "./script.sh"
         // "curl 20.0.101.155:31743/cc/allprojects ",
         // "curl baidu.com"
     ],
