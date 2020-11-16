@@ -15,4 +15,4 @@ steps:
   dockerfile: Dockerfile
   when:
     event:
-    - push
+    - push 
