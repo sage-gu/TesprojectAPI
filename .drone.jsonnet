@@ -48,12 +48,12 @@ local coverage(name, tag, when) = {
         PLUGIN_METHOD: "get"
     },
     environment:{
-      COVERAGE_COLLECTOR_URL: {
-        from_secret: "COVERAGE_COLLECTOR_URL",
+      COVERAGE_COLLECTOR_UPLOAD_URL: {
+        from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
       }
     },
      commands: [
-        "echo COVERAGE_COLLECTOR_URL: ${COVERAGE_COLLECTOR_URL}",
+        "echo COVERAGE_COLLECTOR_UPLOAD_URL: ${COVERAGE_COLLECTOR_UPLOAD_URL}",
         "echo PROJECT_NAME: ${PROJECT_NAME}",
         "export PROJECT_NAME=${DRONE_REPO}",
          "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
