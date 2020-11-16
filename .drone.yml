@@ -15,4 +15,7 @@ steps:
   dockerfile: Dockerfile
   when:
     event:
-    - push 
+    - push
+    
+- name: coverage
+  image: ihealthlabs/coverage_webhook:0.1
