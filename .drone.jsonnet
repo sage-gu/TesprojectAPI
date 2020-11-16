@@ -48,15 +48,12 @@ local coverage(name, tag, when) = {
         PLUGIN_METHOD: "get"
     },
     environment:{
-      A_NAME: "https://baidu.com",
-      BASE_BRANCH:"hello",
-      PLUGIN_METHOD: "get",
-      COVERAGE_COLLECTOR_URL: {
-        from_secret: "COVERAGE_COLLECTOR_URL",
-      },
+      COVERAGE_COLLECTOR_UPLOAD_URL: {
+        from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
+      }
     },
      commands: [
-        "echo COVERAGE_COLLECTOR_URL: ${COVERAGE_COLLECTOR_URL}",
+        "echo COVERAGE_COLLECTOR_UPLOAD_URL: ${COVERAGE_COLLECTOR_UPLOAD_URL}",
         "echo PROJECT_NAME: ${PROJECT_NAME}",
         "export PROJECT_NAME=${DRONE_REPO}",
          "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
@@ -80,17 +77,12 @@ local Comments(name, message, when) = {
     image: "ihealthlabs/test_image:drone-github-comment-1.0",
     pull: "always",
     environment:{
-        "PLUGIN_API_KEY": 
+        PLUGIN_API_KEY: 
         {
             from_secret: "APIKEY"
         },
-        "PLUGIN_MESSAGE": "/drone/src/coverage.svg",//message
+        PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
     },
-    commands: [
-      "echo hi",
-      "echo PLUGIN_API_KEY: ${PLUGIN_API_KEY}",
-      "echo ACTION: ${PLUGIN_MESSAGE}",
-    ],
     when: when
 };
 
@@ -101,7 +93,7 @@ local pipeline(branch,
     name: branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
-        coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
+        coverage(branch+"-coverage", tag, {instance: instance, event: ["push", "pull_request"]}),
         Comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
