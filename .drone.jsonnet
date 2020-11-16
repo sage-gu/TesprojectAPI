@@ -69,8 +69,8 @@ local coverage(name, tag, when) = {
          "pwd ",
          "ls   /drone/src",
          "/bin/curl.sh",
-
          "ls  /bin/ ",
+         "ls   /drone/src",
     ],
     when: when
 };
