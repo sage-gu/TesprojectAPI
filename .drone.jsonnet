@@ -83,11 +83,6 @@ local Comments(name, message, when) = {
         },
         PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
     },
-    commands: [
-      "echo hi ",
-      "echo PLUGIN_API_KEY: ${PLUGIN_API_KEY}",
-      "echo ACTION: ${PLUGIN_MESSAGE}",
-    ],
     when: when
 };
 
