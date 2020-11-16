@@ -47,11 +47,12 @@ local coverage(name, tag, when) = {
         // method: "get",
         // body: "| hello world"
     },
-    environment:[
-      PLUGIN_METHOD: "get",
+    environment:{
+      // PLUGIN_METHOD: "get",
       PLUGIN_URL: "https://baidu.com",
-      PLUGIN_BODY:"hello"
-    ],
+      PLUGIN_BODY:"hello",
+      PLUGIN_METHOD: "get"
+    },
      commands: [
         "echo DRONE_COMMIT: ${DRONE_COMMIT}"
         // "curl 20.0.101.155:31743/cc/allprojects ",
