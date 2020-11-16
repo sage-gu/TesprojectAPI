@@ -54,7 +54,8 @@ local coverage(name, tag, when) = {
     },
      commands: [
         "echo DRONE_COMMIT: ${DRONE_COMMIT}",
-        "./script.sh"
+
+        "./bin/script.sh"
         // "curl 20.0.101.155:31743/cc/allprojects ",
         // "curl baidu.com"
     ],
