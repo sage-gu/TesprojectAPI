@@ -43,24 +43,24 @@ local coverage(name, tag, when) = {
         password:{
           from_secret: "DOCKER_PASSWORD",
         },
-        PLUGIN_URL: "https://baidu.com",
+        A_NAME: "https://baidu.com",
         PLUGIN_BODY:"hello",
         PLUGIN_METHOD: "get"
     },
     environment:{
-      PROJECT_NAME: "https://baidu.com",
+      A_NAME: "https://baidu.com",
       BASE_BRANCH:"hello",
       PLUGIN_METHOD: "get"
     },
      commands: [
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
+        "echo A_NAME: ${A_NAME}",
         "echo PROJECT_NAME: ${PROJECT_NAME}",
         "export PROJECT_NAME=${DRONE_REPO}",
          "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
          "export COMPARING_BRANCH=${DRONE_TARGET_BRANCH}",
-         "export BASE_COMMIT_ID${DRONE_COMMIT}",
+         "export BASE_COMMIT_ID=${DRONE_COMMIT}",
          "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
-         "export ACTION=${DRONE_BUILD_ACTION}",
+         "export ACTION=${DRONE_BUILD_EVENT}",
          "export FILE=clover.xml",
          "./bin/curl.sh"
     ],
