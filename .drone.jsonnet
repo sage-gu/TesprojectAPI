@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.5",
+    image: "ihealthlabs/coverage_webhook:0.6",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -59,23 +59,6 @@ local coverage(name, tag, when) = {
       ACTION: "DRONE_BUILD_EVENT",
       FILE: "small_clover.xml"
     },
-    //  commands: [
-    //     "echo COVERAGE_COLLECTOR_UPLOAD_URL: ${COVERAGE_COLLECTOR_UPLOAD_URL}",
-    //     "echo 黑色: ${PROJECT_NAME}",
-    //     "export PROJECT_NAME=${DRONE_REPO}",
-    //     "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
-    //     "export COMPARING_BRANCH=${DRONE_TARGET_BRANCH}",
-    //     "export BASE_COMMIT_ID=${DRONE_COMMIT}",
-    //     "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
-    //     "export ACTION=${DRONE_BUILD_EVENT}",
-    //     "export FILE=small_clover.xml",
-    //     "echo ACTION: ${ACTION}",
-    //      "pwd ",
-    //      "ls   /drone/src",
-    //      "/bin/curl.sh",
-    //      "ls  /bin/ ",
-    //      "ls   /drone/src",
-    // ],
     when: when
 };
 
