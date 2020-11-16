@@ -86,6 +86,9 @@ local Comments(name, message, when) = {
         },
         "PLUGIN_MESSAGE": "/bin/coverage.svg",//message
     },
+    commands: [
+      "echo ACTION: ${PLUGIN_MESSAGE}",
+    ],
     when: when
 };
 
