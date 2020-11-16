@@ -42,15 +42,15 @@ local coverage(name, tag, when) = {
         },
         password:{
           from_secret: "DOCKER_PASSWORD",
-        },
-        url: "https://baidu.com",
-        method: "get",
-        body: "| hello world"
+        }
+        // url: "https://baidu.com",
+        // method: "get",
+        // body: "| hello world"
     },
      commands: [
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
-       "curl 20.0.101.155:31743/cc/allprojects ",
-        "curl baidu.com"
+        "echo DRONE_COMMIT: ${DRONE_COMMIT}"
+        // "curl 20.0.101.155:31743/cc/allprojects ",
+        // "curl baidu.com"
     ],
     when: when
 };
