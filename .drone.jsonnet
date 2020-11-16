@@ -30,7 +30,7 @@ local publish(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    pull: "if-not-exists",
+    // pull: "if-not-exists",
     image: "healthlabs/coverage_webhook:0.1",
     settings:{
         repo: "sage-gu/TesprojectAPI",
@@ -47,6 +47,11 @@ local coverage(name, tag, when) = {
         // method: "get",
         // body: "| hello world"
     },
+    environment:[
+      PLUGIN_METHOD: "get",
+      PLUGIN_URL: "https://baidu.com",
+      PLUGIN_BODY:"hello"
+    ],
      commands: [
         "echo DRONE_COMMIT: ${DRONE_COMMIT}"
         // "curl 20.0.101.155:31743/cc/allprojects ",
