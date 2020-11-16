@@ -81,7 +81,8 @@ local Comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
+        // PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
+        PLUGIN_MESSAGE: " <p style='background-color: red'> cov is 89%. was 90%  </p>",//message
     },
     when: when
 };
