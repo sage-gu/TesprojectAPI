@@ -67,10 +67,10 @@ local coverage(name, tag, when) = {
          "export FILE=clover.xml",
         "echo ACTION: ${ACTION}",
          "pwd ",
-         "ls -l /bin/ ",
+         "ls   /drone/src",
          "/bin/curl.sh",
 
-         "ls -l /bin/ ",
+         "ls  /bin/ ",
     ],
     when: when
 };
@@ -84,8 +84,11 @@ local Comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        "PLUGIN_MESSAGE": "/bin/coverage.svg",//message
+        "PLUGIN_MESSAGE": "/drone/src/coverage.svg",//message
     },
+    commands: [
+      "echo ACTION: ${PLUGIN_MESSAGE}",
+    ],
     when: when
 };
 
@@ -97,7 +100,7 @@ local pipeline(branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
-        Comments(branch+"-comment", tag, {instance: instance, event: ["push"]})
+        Comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
