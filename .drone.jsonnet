@@ -48,7 +48,8 @@ local coverage(name, tag, when) = {
         body: "| hello world"
     },
      commands: [
-        "curl 20.0.101.155:31743/cc/allprojects ",
+        "echo DRONE_COMMIT: ${DRONE_COMMIT}",
+       "curl 20.0.101.155:31743/cc/allprojects ",
         "curl baidu.com"
     ],
     when: when
