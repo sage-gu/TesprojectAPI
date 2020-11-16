@@ -82,7 +82,7 @@ local Comments(name, message, when) = {
             from_secret: "APIKEY"
         },
         // PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
-        PLUGIN_MESSAGE: " <p style='color: red'> cov is 89%. was 90%  </p> https://us.jenkins.ihealthnext.com/job/sharecare-gql-integration-test/2056/",//message
+        PLUGIN_MESSAGE: " <p style='color: red'> cov is 89%. was 90%  </p>  <img src='https://camo.githubusercontent.com/45ed0ba7a64790deee9aa16cf0d44756c72624a05f67a9cc51705fa480cc741e/68747470733a2f2f75732e6a656e6b696e732e696865616c74686e6578742e636f6d2f2f636f7665726167652d7374617475732d69636f6e2f3f636f7665726167653d302e36383736266d6173746572436f7665726167653d302e363837'></img>",//message
     },
     when: when
 };
