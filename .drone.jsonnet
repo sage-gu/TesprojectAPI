@@ -51,7 +51,7 @@ local coverage(name, tag, when) = {
       A_NAME: "https://baidu.com",
       BASE_BRANCH:"hello",
       PLUGIN_METHOD: "get",
-      COVERAGE_COLLECTOR_URL: {
+      "COVERAGE_COLLECTOR_URL": {
         from_secret: "COVERAGE_COLLECTOR_URL",
       },
     },
