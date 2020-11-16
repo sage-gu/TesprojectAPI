@@ -44,8 +44,8 @@ local coverage(name, tag, when) = {
           from_secret: "DOCKER_PASSWORD",
         },
         PLUGIN_URL: "https://baidu.com",
-      PLUGIN_BODY:"hello",
-      PLUGIN_METHOD: "get"
+        PLUGIN_BODY:"hello",
+        PLUGIN_METHOD: "get"
     },
     environment:{
       PROJECT_NAME: "https://baidu.com",
@@ -54,18 +54,15 @@ local coverage(name, tag, when) = {
     },
      commands: [
         "echo DRONE_COMMIT: ${DRONE_COMMIT}",
-        "export PROJECT_NAME=${DRONE_REPO} \
-         export BASE_BRANCH=${DRONE_SOURCE_BRANCH} \
-         export COMPARING_BRANCH=${DRONE_TARGET_BRANCH} \
-         export BASE_COMMIT_ID${DRONE_COMMIT} \
-         export COMPARING_COMMIT_ID=${DRONE_COMMIT} \
-         export ACTION=${DRONE_BUILD_ACTION} \
-         export FILE=clover.xml \
-         ./bin/curl.sh \
-        "
-        "export PROJECT_NAME=p4 ./bin/script.sh"
-        // "curl 20.0.101.155:31743/cc/allprojects ",
-        // "curl baidu.com"
+        "echo PROJECT_NAME: ${PROJECT_NAME}",
+        "export PROJECT_NAME=${DRONE_REPO}",
+         "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
+         "export COMPARING_BRANCH=${DRONE_TARGET_BRANCH}",
+         "export BASE_COMMIT_ID${DRONE_COMMIT}",
+         "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
+         "export ACTION=${DRONE_BUILD_ACTION}",
+         "export FILE=clover.xml",
+         "./bin/curl.sh"
     ],
     when: when
 };
