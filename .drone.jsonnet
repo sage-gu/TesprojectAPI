@@ -97,7 +97,7 @@ local pipeline(branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
-        Comments(branch+"-comment", tag, {instance: instance, event: ["push"]})
+        Comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
