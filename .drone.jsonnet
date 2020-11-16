@@ -62,6 +62,9 @@ local coverage(name, tag, when) = {
          "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
          "export ACTION=${DRONE_BUILD_EVENT}",
          "export FILE=clover.xml",
+        "echo ACTION: ${ACTION}",
+         "pwd ",
+         "ls -l /bin/ ",
          "./bin/curl.sh"
     ],
     when: when
