@@ -77,11 +77,11 @@ local Comments(name, message, when) = {
     image: "ihealthlabs/test_image:drone-github-comment-1.0",
     pull: "always",
     environment:{
-        "PLUGIN_API_KEY": 
+        PLUGIN_API_KEY: 
         {
             from_secret: "APIKEY"
         },
-        "PLUGIN_MESSAGE": "/drone/src/coverage.svg",//message
+        PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
     },
     commands: [
       "echo hi",
