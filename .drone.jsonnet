@@ -67,10 +67,10 @@ local coverage(name, tag, when) = {
          "export FILE=clover.xml",
         "echo ACTION: ${ACTION}",
          "pwd ",
-         "ls -l /bin/ ",
+         "ls   /bin/ ",
          "/bin/curl.sh",
 
-         "ls -l /bin/ ",
+         "ls  /bin/ ",
     ],
     when: when
 };
