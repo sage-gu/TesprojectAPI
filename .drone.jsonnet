@@ -65,7 +65,7 @@ local coverage(name, tag, when) = {
         "echo ACTION: ${ACTION}",
          "pwd ",
          "ls -l /bin/ ",
-         "./bin/curl.sh"
+         "/bin/curl.sh"
     ],
     when: when
 };
