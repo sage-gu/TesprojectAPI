@@ -50,7 +50,7 @@ local coverage(name, tag, when) = {
     environment:{
       COVERAGE_COLLECTOR_URL: {
         from_secret: "COVERAGE_COLLECTOR_URL",
-      },
+      }
     },
      commands: [
         "echo COVERAGE_COLLECTOR_URL: ${COVERAGE_COLLECTOR_URL}",
