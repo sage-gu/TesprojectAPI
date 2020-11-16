@@ -48,7 +48,6 @@ local coverage(name, tag, when) = {
         // body: "| hello world"
     },
     environment:{
-      // PLUGIN_METHOD: "get",
       PLUGIN_URL: "https://baidu.com",
       PLUGIN_BODY:"hello",
       PLUGIN_METHOD: "get"
@@ -67,7 +66,7 @@ local pipeline(branch,
     type: 'kubernetes',
     name: branch,
     steps: [
-        publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
+        // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
