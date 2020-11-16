@@ -67,7 +67,7 @@ local coverage(name, tag, when) = {
          "export FILE=clover.xml",
         "echo ACTION: ${ACTION}",
          "pwd ",
-         "ls   /bin/ ",
+         "ls   /drone/src",
          "/bin/curl.sh",
 
          "ls  /bin/ ",
@@ -84,7 +84,7 @@ local Comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        "PLUGIN_MESSAGE": "/bin/coverage.svg",//message
+        "PLUGIN_MESSAGE": "/drone/src/coverage.svg",//message
     },
     commands: [
       "echo ACTION: ${PLUGIN_MESSAGE}",
