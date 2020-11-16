@@ -64,7 +64,7 @@ local coverage(name, tag, when) = {
          "export BASE_COMMIT_ID=${DRONE_COMMIT}",
          "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
          "export ACTION=${DRONE_BUILD_EVENT}",
-         "export FILE=clover.xml",
+         "export FILE=small_clover.xml",
         "echo ACTION: ${ACTION}",
          "pwd ",
          "ls   /drone/src",
@@ -87,6 +87,8 @@ local Comments(name, message, when) = {
         "PLUGIN_MESSAGE": "/drone/src/coverage.svg",//message
     },
     commands: [
+      "echo hi",
+      "echo PLUGIN_API_KEY: ${PLUGIN_API_KEY}",
       "echo ACTION: ${PLUGIN_MESSAGE}",
     ],
     when: when
@@ -115,6 +117,12 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
 [
     // define dev pipeline
     pipeline(branch="dev",
+             namespace="sage",
+             tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
+             instance=dev_drone),
+ 
+    // define main pipeline
+    pipeline(branch="main",
              namespace="sage",
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
              instance=dev_drone)
