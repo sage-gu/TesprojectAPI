@@ -43,9 +43,6 @@ local coverage(name, tag, when) = {
         password:{
           from_secret: "DOCKER_PASSWORD",
         },
-        A_NAME: "https://baidu.com",
-        PLUGIN_BODY:"hello",
-        PLUGIN_METHOD: "get"
     },
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
