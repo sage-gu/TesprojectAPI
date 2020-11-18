@@ -1,0 +1,25 @@
+From d67ae5f414186ef9da9f9725ad1f0c9dec415518 Mon Sep 17 00:00:00 2001
+From: Sage Gu <sage.gu@ihealthlabs.com>
+Date: Wed, 18 Nov 2020 11:58:03 +0800
+Subject: [PATCH] change repo name
+
+---
+ .drone.jsonnet | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.drone.jsonnet b/.drone.jsonnet
+index 111051f..8870c62 100644
+--- a/.drone.jsonnet
++++ b/.drone.jsonnet
+@@ -33,7 +33,7 @@ local coverage(name, tag, when) = {
+     // pull: "if-not-exists",
+     image: "ihealthlabs/coverage_webhook:0.3",
+     settings:{
+-        repo: "sage-gu/TesprojectAPI",
++        repo: "TestprojectAPI",
+         tags:[
+             tag
+           ],
+-- 
+2.20.1
+
