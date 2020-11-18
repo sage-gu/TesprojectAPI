@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.3",
+    image: "ihealthlabs/coverage_webhook:0.6",
     settings:{
         repo: "TestprojectAPI",
         tags:[
@@ -43,33 +43,20 @@ local coverage(name, tag, when) = {
         password:{
           from_secret: "DOCKER_PASSWORD",
         },
-        A_NAME: "https://baidu.com",
-        PLUGIN_BODY:"hello",
-        PLUGIN_METHOD: "get"
     },
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
-      }
-    },
-     commands: [
-        "echo COVERAGE_COLLECTOR_UPLOAD_URL: ${COVERAGE_COLLECTOR_UPLOAD_URL}",
-        "echo PROJECT_NAME: ${PROJECT_NAME}",
-        "export PROJECT_NAME=${DRONE_REPO}",
-         "export BASE_BRANCH=${DRONE_SOURCE_BRANCH}",
-         "export COMPARING_BRANCH=${DRONE_TARGET_BRANCH}",
-         "export BASE_COMMIT_ID=${DRONE_COMMIT}",
-         "export COMPARING_COMMIT_ID=${DRONE_COMMIT}",
-         "export ACTION=${DRONE_BUILD_EVENT}",
-         "export FILE=small_clover.xml",
-        "echo ACTION: ${ACTION}",
-         "pwd ",
-         "ls   /drone/src",
-         "/bin/curl.sh",
-         "ls  /bin/ ",
-         "ls   /drone/src",
-    ],
-    when: when
+      },
+      PROJECT_NAME: "${DRONE_REPO}",
+      BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
+      COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
+      BASE_COMMIT_ID: "${DRONE_COMMIT}",
+      COMPARING_COMMIT_ID: "${DRONE_COMMIT}",
+      ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
+      FILE: "small_clover.xml"  
+    }, 
+    //when: when
 };
 
 local Comments(name, message, when) = {
@@ -119,4 +106,5 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
              instance=dev_drone)
 ]
+
 
