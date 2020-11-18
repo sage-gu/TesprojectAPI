@@ -43,23 +43,20 @@ local coverage(name, tag, when) = {
         password:{
           from_secret: "DOCKER_PASSWORD",
         },
-        A_NAME: "https://baidu.com",
-        PLUGIN_BODY:"hello",
-        PLUGIN_METHOD: "get"
     },
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
       },
-      PROJECT_NAME: "DRONE_REPO",
-      BASE_BRANCH: "DRONE_SOURCE_BRANCH",
-      COMPARING_BRANCH: "DRONE_TARGET_BRANCH",
-      BASE_COMMIT_ID: "DRONE_COMMIT",
-      COMPARING_COMMIT_ID: "DRONE_COMMIT",
-      ACTION: "DRONE_BUILD_EVENT",
-      FILE: "small_clover.xml"
-    },
-    when: when
+      PROJECT_NAME: "${DRONE_REPO}",
+      BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
+      COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
+      BASE_COMMIT_ID: "${DRONE_COMMIT}",
+      COMPARING_COMMIT_ID: "${DRONE_COMMIT}",
+      ACTION: "${DRONE_BUILD_EVENT}",
+      FILE: "small_clover.xml" 
+    }, 
+    //when: when
 };
 
 local Comments(name, message, when) = {
