@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1603863378692" clover="3.2.0">
   <project timestamp="1603863378692" name="All files">
-    <metrics statements="5" coveredstatements="1" conditionals="8512" coveredconditionals="6246" methods="2089" coveredmethods="1692" elements="23650" coveredelements="18927" complexity="0" loc="13049" ncloc="13049" packages="111" files="748" classes="748">
+    <metrics statements="6" coveredstatements="6" conditionals="8512" coveredconditionals="6246" methods="2089" coveredmethods="1692" elements="23650" coveredelements="18927" complexity="0" loc="13049" ncloc="13049" packages="111" files="748" classes="748">
     </metrics>
 </project>
 </coverage>
