@@ -33,7 +33,7 @@ local coverage(name, tag, when) = {
     // pull: "if-not-exists",
     image: "ihealthlabs/coverage_webhook:0.6",
     settings:{
-        repo: "TestprojectAPI",
+        repo: "sage-gu/TesprojectAPI",
         tags:[
             tag
           ],
