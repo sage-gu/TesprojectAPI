@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.7",
+    image: "ihealthlabs/coverage_webhook:0.6",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
