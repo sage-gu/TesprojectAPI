@@ -55,7 +55,7 @@ local coverage(name, tag, when) = {
       COMPARING_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT}",
       FILE: "small_clover.xml" 
-    },
+    }, 
     //when: when
 };
 
