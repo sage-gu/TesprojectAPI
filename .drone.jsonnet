@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.6",
+    image: "ihealthlabs/coverage_webhook:0.7",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -56,7 +56,7 @@ local coverage(name, tag, when) = {
       ACTION: "${DRONE_BUILD_EVENT}",
       FILE: "small_clover.xml" 
     },
-    when: when
+    //when: when
 };
 
 local Comments(name, message, when) = {
