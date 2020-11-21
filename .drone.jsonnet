@@ -53,7 +53,7 @@ local coverage(name, tag, when) = {
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      FILE: "small_clover.xml",  
+      COVERAGE_RESULT_PATH: "small_clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
     //when: when
