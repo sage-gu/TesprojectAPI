@@ -79,7 +79,8 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
+        REPORT_PATH: "report.txt",
+        PLUGIN_MESSAGE: "/drone/src/$REPORT_PATH",//message
     },
     when: when
 };
