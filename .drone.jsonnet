@@ -56,7 +56,7 @@ local coverage(name, tag, when) = {
       COVERAGE_RESULT_PATH: "small_clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
-    //when: when
+    when: when
 };
 
 local comments(name, message, when) = {
@@ -68,7 +68,11 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
+<<<<<<< HEAD
         PLUGIN_MESSAGE: "/drone/src/$REPORT_PATH",//message
+=======
+        PLUGIN_MESSAGE: "/drone/src/"+${REPORT_PATH},//message
+>>>>>>> 9ee34201a083229ec3d038435f0279e829bfcdfc
     },
     when: when
 };
@@ -81,6 +85,13 @@ local pipeline(branch, namespace, tag, instance) = {
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
     ],
+<<<<<<< HEAD
+=======
+     commands: [
+        "cat $REPORT_PATH",
+        "cat ${REPORT_PATH}",
+    ],
+>>>>>>> 9ee34201a083229ec3d038435f0279e829bfcdfc
     trigger:{
         branch: branch
     },
