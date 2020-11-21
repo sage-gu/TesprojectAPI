@@ -31,7 +31,7 @@ local publish(name, tag, when) = {
 local coverage(name, tag, when) = {
     name: name,
     // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.6",
+    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.49",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -42,7 +42,7 @@ local coverage(name, tag, when) = {
         },
         password:{
           from_secret: "DOCKER_PASSWORD",
-        },
+        }, 
     },
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
@@ -52,14 +52,14 @@ local coverage(name, tag, when) = {
       BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
-      COMPARING_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      FILE: "small_clover.xml"  
+      FILE: "small_clover.xml",  
+      REPORT_PATH: "report.txt"
     }, 
     //when: when
 };
 
-local Comments(name, message, when) = {
+local comments(name, message, when) = {
     name: name,
     image: "ihealthlabs/test_image:drone-github-comment-1.0",
     pull: "always",
@@ -68,20 +68,19 @@ local Comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
+        PLUGIN_MESSAGE: "/drone/src/${REPORT_PATH}",//message
     },
     when: when
 };
 
-local pipeline(branch,
-               namespace, tag, instance) = {
+local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
     name: branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
-        coverage(branch+"-coverage", tag, {instance: instance, event: ["push", "pull_request"]}),
-        Comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
+        coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
+        comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
