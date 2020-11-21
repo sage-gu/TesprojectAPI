@@ -16,11 +16,24 @@ local outputReport(name, tag, when) = {
         }
     },
 
+    environment:{
+      COVERAGE_COLLECTOR_UPLOAD_URL: {
+        from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
+      },
+      PROJECT_NAME: "${DRONE_REPO}",
+      BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
+      COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
+      BASE_COMMIT_ID: "${DRONE_COMMIT}",
+      ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
+      COVERAGE_RESULT_PATH: "small_clover.xml",  
+      REPORT_PATH: "report.txt"
+    }, 
      commands: [
         "cat $REPORT_PATH",
         "cat ${REPORT_PATH}",
 
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
+        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
         
     ],
     when: when
@@ -66,7 +79,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/$REPORT_PATH",//message
+        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
     },
     when: when
 };
