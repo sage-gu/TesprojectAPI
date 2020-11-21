@@ -1,5 +1,5 @@
 
-local publish(name, tag, when) = {
+local outputReport(name, tag, when) = {
     name: name,
     pull: "if-not-exists",
     image: "ubuntu:latest",
@@ -15,15 +15,13 @@ local publish(name, tag, when) = {
           from_secret: "DOCKER_PASSWORD",
         }
     },
+
      commands: [
-        "echo branch: ${DRONE_BRANCH} - buildEvent: ${DRONE_BUILD_EVENT}",
-        "echo target branch for the push or pull request DRONE_COMMIT_BRANCH: ${DRONE_COMMIT_BRANCH} - DRONE_SOURCE_BRANCH: ${DRONE_SOURCE_BRANCH}",
-        "echo DRONE_TARGET_BRANCH: ${DRONE_TARGET_BRANCH}",
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}"
-        // "apt-get update",
-        // "apt-get -y install curl",
-        // "curl 20.0.101.155:31743/cc/allprojects ",
-        // "curl baidu.com"
+        "cat $REPORT_PATH",
+        "cat ${REPORT_PATH}",
+
+        "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
+        
     ],
     when: when
 };
@@ -80,10 +78,7 @@ local pipeline(branch, namespace, tag, instance) = {
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
-    ],
-     commands: [
-        "cat $REPORT_PATH",
-        "cat ${REPORT_PATH}",
+        outputReport(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
         branch: branch
