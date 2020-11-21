@@ -68,7 +68,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/${REPORT_PATH}",//message
+        PLUGIN_MESSAGE: "/drone/src/$REPORT_PATH",//message
     },
     when: when
 };
@@ -80,6 +80,18 @@ local pipeline(branch, namespace, tag, instance) = {
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
+    ],
+    trigger:{
+        branch: branch
+    },
+    image_pull_secrets: ["dockerconfigjson"]
+};
+
+local pipelineComments(branch, namespace, tag, instance) = {
+    kind: 'pipeline',
+    type: 'kubernetes',
+    name: branch,
+    steps: [
         comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
@@ -100,7 +112,7 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
              instance=dev_drone),
  
     // define main pipeline
-    pipeline(branch="main",
+    pipelineComments(branch="main",
              namespace="sage",
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
              instance=dev_drone)
