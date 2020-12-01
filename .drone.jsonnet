@@ -90,8 +90,8 @@ local pipeline(branch, namespace, tag, instance) = {
     name: branch,
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
+        outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
-        outputReport(branch+"-report", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
         branch: branch
