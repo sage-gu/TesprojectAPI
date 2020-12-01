@@ -101,7 +101,7 @@ local pipelineComments(branch, namespace, tag, instance) = {
     type: 'kubernetes',
     name: branch,
     steps: [
-        comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
+        comments("comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
