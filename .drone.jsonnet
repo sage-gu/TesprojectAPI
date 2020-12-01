@@ -63,6 +63,9 @@ local coverage(name, tag, when) = {
       COVERAGE_RESULT_PATH: "clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
+    depends_on: [
+      "coverage",
+    ],
     when: when
 };
 
@@ -96,7 +99,6 @@ local pipeline(branch, namespace, tag, instance) = {
         coverage("coverage", tag, {instance: instance, event: ["push"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
         comments("1comment", tag, {instance: instance, event: ["pull_request"]})
-
     ],
     // trigger:{
     //     branch: branch
@@ -129,13 +131,13 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
     pipeline(branch="dev",
              namespace="sage",
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-             instance=dev_drone),
+             instance=dev_drone)
  
     // define main pipeline
-    pipelineComments(branch="main",
-             namespace="sage",
-             tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-             instance=dev_drone)
+    // pipelineComments(branch="main",
+    //          namespace="sage",
+    //          tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
+    //          instance=dev_drone)
 ]
 
 
