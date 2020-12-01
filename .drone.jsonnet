@@ -1,5 +1,5 @@
 
-local publish(name, tag, when) = {
+local outputReport(name, tag, when) = {
     name: name,
     pull: "if-not-exists",
     image: "ubuntu:latest",
@@ -15,23 +15,33 @@ local publish(name, tag, when) = {
           from_secret: "DOCKER_PASSWORD",
         }
     },
-     commands: [
-        "echo branch: ${DRONE_BRANCH} - buildEvent: ${DRONE_BUILD_EVENT}",
-        "echo target branch for the push or pull request DRONE_COMMIT_BRANCH: ${DRONE_COMMIT_BRANCH} - DRONE_SOURCE_BRANCH: ${DRONE_SOURCE_BRANCH}",
-        "echo DRONE_TARGET_BRANCH: ${DRONE_TARGET_BRANCH}",
-        "echo DRONE_COMMIT: ${DRONE_COMMIT}"
-        // "apt-get update",
-        // "apt-get -y install curl",
-        // "curl 20.0.101.155:31743/cc/allprojects ",
-        // "curl baidu.com"
+    environment:{
+      COVERAGE_COLLECTOR_UPLOAD_URL: {
+        from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
+      },
+      PROJECT_NAME: "${DRONE_REPO}",
+      BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
+      COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
+      BASE_COMMIT_ID: "${DRONE_COMMIT}",
+      ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
+      COVERAGE_RESULT_PATH: "small_clover.xml",  
+      REPORT_PATH: "report.txt"
+    }, 
+    commands: [
+        "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
+        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
+        "pwd; ls -l",
+        "cat /drone/src/report.txt"
+    ],
+    depends_on: [
+      "coverage",
     ],
     when: when
 };
 
 local coverage(name, tag, when) = {
     name: name,
-    // pull: "if-not-exists",
-    image: "ihealthlabs/coverage_webhook:0.6",
+    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.49",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -42,7 +52,7 @@ local coverage(name, tag, when) = {
         },
         password:{
           from_secret: "DOCKER_PASSWORD",
-        },
+        }, 
     },
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
@@ -52,14 +62,14 @@ local coverage(name, tag, when) = {
       BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
-      COMPARING_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      FILE: "small_clover.xml"  
+      COVERAGE_RESULT_PATH: "clover.xml",  
+      REPORT_PATH: "report.txt"
     }, 
-    //when: when
+    when: when
 };
 
-local Comments(name, message, when) = {
+local comments(name, message, when) = {
     name: name,
     image: "ihealthlabs/test_image:drone-github-comment-1.0",
     pull: "always",
@@ -68,24 +78,44 @@ local Comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/coverage.svg",//message
+        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
     },
+    depends_on: [
+      "coverage",
+      "rmOldReport"
+    ],
     when: when
 };
 
-local pipeline(branch,
-               namespace, tag, instance) = {
+local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
-    name: branch,
+    name: 'coveragePipeline',
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
-        coverage(branch+"-coverage", tag, {instance: instance, event: ["push", "pull_request"]}),
-        Comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
+        coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
+        outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
+        comments("1comment", tag, {instance: instance, event: ["pull_request"]})
+    ],
+    // trigger:{
+    //     branch: branch
+    // },
+    image_pull_secrets: ["dockerconfigjson"]
+};
+
+local pipelineComments(branch, namespace, tag, instance) = {
+    kind: 'pipeline',
+    type: 'kubernetes',
+    name: "commentsPipeline",
+    steps: [
+        comments("comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
     },
+    depends_on: [
+      "coveragePipeline"
+    ],
     image_pull_secrets: ["dockerconfigjson"]
 };
 
@@ -98,13 +128,13 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
     pipeline(branch="dev",
              namespace="sage",
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-             instance=dev_drone),
+             instance=dev_drone)
  
     // define main pipeline
-    pipeline(branch="main",
-             namespace="sage",
-             tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-             instance=dev_drone)
+    // pipelineComments(branch="main",
+    //          namespace="sage",
+    //          tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
+    //          instance=dev_drone)
 ]
 
 
