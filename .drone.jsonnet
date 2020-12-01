@@ -15,7 +15,6 @@ local outputReport(name, tag, when) = {
           from_secret: "DOCKER_PASSWORD",
         }
     },
-
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
@@ -28,12 +27,12 @@ local outputReport(name, tag, when) = {
       COVERAGE_RESULT_PATH: "small_clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
-     commands: [
+    commands: [
         "cat $REPORT_PATH",
         "cat ${REPORT_PATH}",
 
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
-        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
+        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
         
     ],
     when: when
@@ -41,7 +40,6 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    // pull: "if-not-exists",
     image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.49",
     settings:{
         repo: "sage-gu/TesprojectAPI",
@@ -79,8 +77,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        REPORT_PATH: "report.txt",
-        PLUGIN_MESSAGE: "/drone/src/$REPORT_PATH",//message
+        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
     },
     when: when
 };
