@@ -30,7 +30,7 @@ local outputReport(name, tag, when) = {
     commands: [
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
         "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
-        "pwd; ls -l",
+        "pwd; ls -l"
         // "rm /drone/src/report.txt"
         
     ],
@@ -88,8 +88,7 @@ local pipeline(branch, namespace, tag, instance) = {
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
-        coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
-        comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
+        coverage("coverage", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
         branch: branch
@@ -107,6 +106,7 @@ local pipelineComments(branch, namespace, tag, instance) = {
     trigger:{
         branch: branch
     },
+    depends_on:["rmOldReport", "coverage"],
     image_pull_secrets: ["dockerconfigjson"]
 };
 
@@ -122,10 +122,10 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
              instance=dev_drone),
  
     // define main pipeline
-    // pipelineComments(branch="main",
-    //          namespace="sage",
-    //          tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-    //          instance=dev_drone)
+    pipelineComments(branch="main",
+             namespace="sage",
+             tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
+             instance=dev_drone)
 ]
 
 
