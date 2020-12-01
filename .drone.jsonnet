@@ -33,6 +33,8 @@ local outputReport(name, tag, when) = {
 
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
         "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
+        "pwd; ls -l",
+        "rm /drone/src/report.txt"
         
     ],
     when: when
