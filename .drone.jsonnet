@@ -31,8 +31,7 @@ local outputReport(name, tag, when) = {
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
         "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
         "pwd; ls -l",
-          "cat /drone/src/report.txt"
-        
+        "cat /drone/src/report.txt"
     ],
     when: when
 };
@@ -81,6 +80,29 @@ local comments(name, message, when) = {
     when: when
 };
 
+local outputReportForComment(name, tag, when) = {
+    name: name,
+    pull: "if-not-exists",
+    image: "ubuntu:latest",
+    settings:{
+        repo: "sage-gu/TesprojectAPI",
+        tags:[
+            tag
+          ],
+        username:{
+          from_secret: "DOCKER_USERNAME",
+        },
+        password:{
+          from_secret: "DOCKER_PASSWORD",
+        }
+    },
+    commands: [
+        "pwd; ls -l",
+        "cat /drone/src/report.txt"
+    ],
+    when: when
+};
+
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
@@ -101,6 +123,7 @@ local pipelineComments(branch, namespace, tag, instance) = {
     type: 'kubernetes',
     name: "commentsPipeline",
     steps: [
+        outputReportForComment("outputReportForComment", tag, {instance: instance, event: ["pull_request"]}),
         comments("comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
