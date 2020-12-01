@@ -85,10 +85,7 @@ local comments(name, message, when) = {
       "rmOldReport"
     ],
     when: when
-    
 };
-
- 
 
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
