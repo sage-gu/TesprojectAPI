@@ -28,8 +28,7 @@ local outputReport(name, tag, when) = {
       REPORT_PATH: "report.txt"
     }, 
     commands: [
-        "cat $REPORT_PATH",
-        "cat ${REPORT_PATH}",
+      
 
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
         "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
