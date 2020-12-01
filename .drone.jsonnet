@@ -33,6 +33,9 @@ local outputReport(name, tag, when) = {
         "pwd; ls -l",
         "cat /drone/src/report.txt"
     ],
+    depends_on: [
+      "coverage",
+    ],
     when: when
 };
 
@@ -63,9 +66,6 @@ local coverage(name, tag, when) = {
       COVERAGE_RESULT_PATH: "clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
-    depends_on: [
-      "coverage",
-    ],
     when: when
 };
 
