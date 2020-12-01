@@ -30,8 +30,8 @@ local outputReport(name, tag, when) = {
     commands: [
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
         "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
-        "pwd; ls -l"
-        // "rm /drone/src/report.txt"
+        "pwd; ls -l",
+          "cat /drone/src/report.txt"
         
     ],
     when: when
@@ -87,8 +87,8 @@ local pipeline(branch, namespace, tag, instance) = {
     name: 'coveragePipeline',
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
-        outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
         coverage("coverage", tag, {instance: instance, event: ["push"]}),
+        outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
     ],
     trigger:{
         branch: branch
