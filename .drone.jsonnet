@@ -93,9 +93,9 @@ local pipeline(branch, namespace, tag, instance) = {
         comments("1comment", tag, {instance: instance, event: ["pull_request"]})
 
     ],
-    trigger:{
-        branch: branch
-    },
+    // trigger:{
+    //     branch: branch
+    // },
     image_pull_secrets: ["dockerconfigjson"]
 };
 
