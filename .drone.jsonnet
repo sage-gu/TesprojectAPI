@@ -89,6 +89,7 @@ local pipeline(branch, namespace, tag, instance) = {
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
         coverage(branch+"-coverage", tag, {instance: instance, event: ["push"]}),
+        comments(branch+"-comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
@@ -121,10 +122,10 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
              instance=dev_drone),
  
     // define main pipeline
-    pipelineComments(branch="main",
-             namespace="sage",
-             tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
-             instance=dev_drone)
+    // pipelineComments(branch="main",
+    //          namespace="sage",
+    //          tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
+    //          instance=dev_drone)
 ]
 
 
