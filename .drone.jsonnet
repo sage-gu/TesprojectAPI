@@ -84,7 +84,7 @@ local comments(name, message, when) = {
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
-    name: branch,
+    name: 'coveragePipeline',
     steps: [
         // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["push"]}),
@@ -99,14 +99,16 @@ local pipeline(branch, namespace, tag, instance) = {
 local pipelineComments(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
-    name: branch,
+    name: "commentsPipeline",
     steps: [
         comments("comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     trigger:{
         branch: branch
     },
-    depends_on:["rmOldReport", "coverage"],
+    depends_on: [
+      "coveragePipeline"
+    ],
     image_pull_secrets: ["dockerconfigjson"]
 };
 
