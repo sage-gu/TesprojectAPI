@@ -77,7 +77,12 @@ local comments(name, message, when) = {
         },
         PLUGIN_MESSAGE: "/drone/src/report.txt",//message
     },
+    depends_on: [
+      "coverage",
+      "rmOldReport"
+    ],
     when: when
+    
 };
 
  
