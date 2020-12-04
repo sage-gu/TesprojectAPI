@@ -78,7 +78,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
+        PLUGIN_MESSAGE: "[ccc](https://us.jenkins.ihealthnext.com/job/sharecare-gql-unit-tests/clover/cron/system_msg/_utils.js.html)"//""/drone/src/report.txt",//message
     },
     depends_on: [
       "coverage",
