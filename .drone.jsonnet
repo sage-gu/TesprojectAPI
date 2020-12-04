@@ -80,10 +80,10 @@ local comments(name, message, when) = {
         },
         PLUGIN_MESSAGE: "[ccc](https://us.jenkins.ihealthnext.com/job/sharecare-gql-unit-tests/clover/cron/system_msg/_utils.js.html)"//""/drone/src/report.txt",//message
     },
-    depends_on: [
-      "coverage",
-      "rmOldReport"
-    ],
+    // depends_on: [
+    //   "coverage",
+    //   "rmOldReport"
+    // ],
     when: when
 };
 
