@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1607129603973" clover="4.4.1">
+   <project name="cc 0.0.4-SNAPSHOT" timestamp="1607129596901">
+      <metrics coveredelements="136" complexity="64" loc="535" methods="40" classes="8" statements="156" packages="1" coveredconditionals="10" coveredmethods="26" elements="224" ncloc="442" files="8" conditionals="28" coveredstatements="100"/>
+      <package name="com.ihealth.demo">
+         <metrics coveredelements="136" complexity="64" loc="535" methods="40" classes="8" statements="156" coveredconditionals="10" coveredmethods="26" elements="224" ncloc="442" files="8" conditionals="28" coveredstatements="100"/>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/AmazonClient.java" name="AmazonClient.java">
+            <metrics coveredelements="12" coveredconditionals="0" complexity="10" loc="95" coveredmethods="3" methods="4" elements="47" classes="1" ncloc="85" statements="35" conditionals="8" coveredstatements="9"/>
+            <class name="AmazonClient">
+               <metrics coveredelements="12" coveredconditionals="0" complexity="10" coveredmethods="3" methods="4" elements="47" statements="35" conditionals="8" coveredstatements="9"/>
+            </class>
+            <line complexity="1" visibility="public" signature="AmazonClient()" num="37" count="7" type="method"/>
+            <line num="38" count="7" type="stmt"/>
+            <line complexity="1" visibility="public" signature="toString() : String" num="41" count="1" type="method"/>
+            <line num="43" count="1" type="stmt"/>
+            <line complexity="2" visibility="public" signature="uploadToS3(File,String) : String" num="46" count="2" type="method"/>
+            <line num="47" count="2" type="stmt"/>
+            <line num="48" count="2" type="stmt"/>
+            <line num="49" count="2" type="stmt"/>
+            <line num="50" count="2" type="stmt"/>
+            <line num="51" count="2" type="stmt"/>
+            <line num="52" count="2" type="stmt"/>
+            <line num="53" count="2" type="stmt"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line complexity="6" visibility="public" signature="uploadDirectoryToS3(File,String) : String" num="62" count="0" type="method"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="64" count="0" type="stmt"/>
+            <line num="66" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="66" type="cond"/>
+            <line num="67" count="0" type="stmt"/>
+            <line num="68" count="0" type="stmt"/>
+            <line num="69" count="0" type="stmt"/>
+            <line num="72" count="0" type="stmt"/>
+            <line num="73" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="73" type="cond"/>
+            <line num="74" count="0" type="stmt"/>
+            <line num="76" count="0" type="stmt"/>
+            <line num="77" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="77" type="cond"/>
+            <line num="79" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="79" type="cond"/>
+            <line num="80" count="0" type="stmt"/>
+            <line num="81" count="0" type="stmt"/>
+            <line num="82" count="0" type="stmt"/>
+            <line num="84" count="0" type="stmt"/>
+            <line num="88" count="0" type="stmt"/>
+            <line num="89" count="0" type="stmt"/>
+            <line num="90" count="0" type="stmt"/>
+            <line num="91" count="0" type="stmt"/>
+            <line num="92" count="0" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/CcApplication.java" name="CcApplication.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="1" loc="17" coveredmethods="1" methods="1" elements="2" classes="1" ncloc="12" statements="1" conditionals="0" coveredstatements="1"/>
+            <class name="CcApplication">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main(String[]) : void" num="13" count="1" type="method"/>
+            <line num="14" count="1" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/CcConfiguration.java" name="CcConfiguration.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="1" loc="20" coveredmethods="1" methods="1" elements="2" classes="1" ncloc="15" statements="1" conditionals="0" coveredstatements="1"/>
+            <class name="CcConfiguration">
+               <metrics coveredelements="2" coveredconditionals="0" complexity="1" coveredmethods="1" methods="1" elements="2" statements="1" conditionals="0" coveredstatements="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="amazonS3() : AmazonS3" num="14" count="4" type="method"/>
+            <line num="16" count="4" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/CoverageEntity.java" name="CoverageEntity.java">
+            <metrics coveredelements="22" coveredconditionals="0" complexity="24" loc="142" coveredmethods="11" methods="24" elements="48" classes="1" ncloc="116" statements="24" conditionals="0" coveredstatements="11"/>
+            <class name="CoverageEntity">
+               <metrics coveredelements="22" coveredconditionals="0" complexity="24" coveredmethods="11" methods="24" elements="48" statements="24" conditionals="0" coveredstatements="11"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : int" num="23" count="0" type="method"/>
+            <line num="26" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(int) : void" num="29" count="0" type="method"/>
+            <line num="30" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getProjectName() : String" num="33" count="0" type="method"/>
+            <line num="36" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setProjectName(String) : void" num="39" count="3" type="method"/>
+            <line num="40" count="3" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseBranch() : String" num="43" count="0" type="method"/>
+            <line num="46" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBaseBranch(String) : void" num="49" count="1" type="method"/>
+            <line num="50" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getComparingBranch() : String" num="53" count="0" type="method"/>
+            <line num="56" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setComparingBranch(String) : void" num="59" count="1" type="method"/>
+            <line num="60" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBaseCommitId() : String" num="63" count="0" type="method"/>
+            <line num="66" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBaseCommitId(String) : void" num="69" count="1" type="method"/>
+            <line num="70" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getPercentage() : double" num="73" count="1" type="method"/>
+            <line num="76" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setPercentage(double) : void" num="79" count="1" type="method"/>
+            <line num="80" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getAction() : String" num="83" count="0" type="method"/>
+            <line num="86" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setAction(String) : void" num="89" count="1" type="method"/>
+            <line num="90" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCreatedAt() : Timestamp" num="93" count="0" type="method"/>
+            <line num="96" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCreatedAt(Timestamp) : void" num="99" count="1" type="method"/>
+            <line num="100" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getBranch() : String" num="103" count="0" type="method"/>
+            <line num="106" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setBranch(String) : void" num="109" count="1" type="method"/>
+            <line num="110" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCommitId() : String" num="113" count="0" type="method"/>
+            <line num="116" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCommitId(String) : void" num="119" count="1" type="method"/>
+            <line num="120" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getReportFile() : String" num="123" count="0" type="method"/>
+            <line num="126" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setReportFile(String) : void" num="129" count="1" type="method"/>
+            <line num="130" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getReportDirectory() : String" num="133" count="0" type="method"/>
+            <line num="136" count="0" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setReportDirectory(String) : void" num="139" count="0" type="method"/>
+            <line num="140" count="0" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/CoverageRepository.java" name="CoverageRepository.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="14" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="10" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="CoverageRepository">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/MainController.java" name="MainController.java">
+            <metrics coveredelements="86" coveredconditionals="10" complexity="22" loc="190" coveredmethods="4" methods="4" elements="113" classes="1" ncloc="161" statements="89" conditionals="20" coveredstatements="72"/>
+            <class name="MainController">
+               <metrics coveredelements="86" coveredconditionals="10" complexity="22" coveredmethods="4" methods="4" elements="113" statements="89" conditionals="20" coveredstatements="72"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllProjects() : Iterable&lt;ProjectEntity&gt;" num="40" count="2" type="method"/>
+            <line num="42" count="2" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCommitsByProjectName(String) : Iterable&lt;CoverageEntity&gt;" num="45" count="1" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line complexity="4" visibility="public" signature="analyseCloverageDictioanry(String,String,String) : String" num="50" count="1" type="method"/>
+            <line num="51" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="51" type="cond"/>
+            <line num="52" count="0" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line falsecount="1" truecount="0" num="54" type="cond"/>
+            <line num="55" count="0" type="stmt"/>
+            <line num="56" count="0" type="stmt"/>
+            <line num="57" count="0" type="stmt"/>
+            <line num="59" count="0" type="stmt"/>
+            <line num="60" count="0" type="stmt"/>
+            <line falsecount="0" truecount="0" num="60" type="cond"/>
+            <line num="61" count="0" type="stmt"/>
+            <line num="62" count="0" type="stmt"/>
+            <line num="63" count="0" type="stmt"/>
+            <line num="65" count="0" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line complexity="16" visibility="public" signature="analyseCoverage(String,MultipartFile,String,String,String,String,String) : String" num="72" count="1" type="method"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="84" count="1" type="stmt"/>
+            <line num="85" count="1" type="stmt"/>
+            <line num="86" count="1" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line falsecount="0" truecount="0" num="87" type="cond"/>
+            <line num="88" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="93" count="0" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="98" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="100" count="1" type="stmt"/>
+            <line num="101" count="1" type="stmt"/>
+            <line num="102" count="1" type="stmt"/>
+            <line num="103" count="1" type="stmt"/>
+            <line num="104" count="1" type="stmt"/>
+            <line falsecount="1" truecount="1" num="104" type="cond"/>
+            <line num="105" count="1" type="stmt"/>
+            <line num="106" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+            <line falsecount="1" truecount="1" num="107" type="cond"/>
+            <line num="108" count="1" type="stmt"/>
+            <line num="109" count="1" type="stmt"/>
+            <line num="110" count="1" type="stmt"/>
+            <line num="111" count="1" type="stmt"/>
+            <line num="112" count="1" type="stmt"/>
+            <line num="113" count="1" type="stmt"/>
+            <line num="115" count="0" type="stmt"/>
+            <line num="118" count="0" type="stmt"/>
+            <line num="120" count="1" type="stmt"/>
+            <line num="121" count="1" type="stmt"/>
+            <line num="122" count="1" type="stmt"/>
+            <line num="124" count="0" type="stmt"/>
+            <line num="125" count="0" type="stmt"/>
+            <line num="127" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="127" type="cond"/>
+            <line num="128" count="1" type="stmt"/>
+            <line num="133" count="0" type="stmt"/>
+            <line num="137" count="1" type="stmt"/>
+            <line num="140" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="140" type="cond"/>
+            <line num="141" count="1" type="stmt"/>
+            <line num="143" count="0" type="stmt"/>
+            <line num="148" count="1" type="stmt"/>
+            <line num="149" count="1" type="stmt"/>
+            <line num="150" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="150" type="cond"/>
+            <line num="151" count="1" type="stmt"/>
+            <line num="152" count="1" type="stmt"/>
+            <line num="153" count="1" type="stmt"/>
+            <line num="156" count="1" type="stmt"/>
+            <line num="157" count="1" type="stmt"/>
+            <line num="158" count="1" type="stmt"/>
+            <line num="159" count="1" type="stmt"/>
+            <line num="160" count="1" type="stmt"/>
+            <line num="161" count="1" type="stmt"/>
+            <line num="162" count="1" type="stmt"/>
+            <line num="163" count="1" type="stmt"/>
+            <line num="164" count="1" type="stmt"/>
+            <line num="165" count="1" type="stmt"/>
+            <line num="166" count="1" type="stmt"/>
+            <line num="167" count="1" type="stmt"/>
+            <line num="168" count="1" type="stmt"/>
+            <line num="170" count="1" type="stmt"/>
+            <line num="171" count="1" type="stmt"/>
+            <line falsecount="0" truecount="1" num="171" type="cond"/>
+            <line num="172" count="1" type="stmt"/>
+            <line num="173" count="1" type="stmt"/>
+            <line num="174" count="1" type="stmt"/>
+            <line num="177" count="1" type="stmt"/>
+            <line num="178" count="1" type="stmt"/>
+            <line num="180" count="1" type="stmt"/>
+            <line num="185" count="1" type="stmt"/>
+            <line num="186" count="1" type="stmt"/>
+            <line num="188" count="1" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/ProjectEntity.java" name="ProjectEntity.java">
+            <metrics coveredelements="12" coveredconditionals="0" complexity="6" loc="44" coveredmethods="6" methods="6" elements="12" classes="1" ncloc="35" statements="6" conditionals="0" coveredstatements="6"/>
+            <class name="ProjectEntity">
+               <metrics coveredelements="12" coveredconditionals="0" complexity="6" coveredmethods="6" methods="6" elements="12" statements="6" conditionals="0" coveredstatements="6"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getId() : int" num="14" count="1" type="method"/>
+            <line num="17" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setId(int) : void" num="20" count="1" type="method"/>
+            <line num="21" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getCreatedAt() : Timestamp" num="24" count="1" type="method"/>
+            <line num="27" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setCreatedAt(Timestamp) : void" num="30" count="1" type="method"/>
+            <line num="31" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="getName() : String" num="34" count="1" type="method"/>
+            <line num="37" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="setName(String) : void" num="40" count="5" type="method"/>
+            <line num="41" count="5" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/main/java/com/ihealth/demo/ProjectRepository.java" name="ProjectRepository.java">
+            <metrics coveredelements="0" coveredconditionals="0" complexity="0" loc="13" coveredmethods="0" methods="0" elements="0" classes="1" ncloc="8" statements="0" conditionals="0" coveredstatements="0"/>
+            <class name="ProjectRepository">
+               <metrics coveredelements="0" coveredconditionals="0" complexity="0" coveredmethods="0" methods="0" elements="0" statements="0" conditionals="0" coveredstatements="0"/>
+            </class>
+         </file>
+      </package>
+   </project>
+   <testproject name="cc 0.0.4-SNAPSHOT" timestamp="1607129596901">
+      <metrics coveredelements="71" complexity="13" loc="261" methods="12" classes="4" statements="60" packages="1" coveredconditionals="0" coveredmethods="12" elements="72" ncloc="213" files="4" conditionals="0" coveredstatements="59"/>
+      <package name="com.ihealth.demo">
+         <metrics coveredelements="71" complexity="13" loc="261" methods="12" classes="4" statements="60" coveredconditionals="0" coveredmethods="12" elements="72" ncloc="213" files="4" conditionals="0" coveredstatements="59"/>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/test/java/com/ihealth/demo/AmazonClientTest.java" name="AmazonClientTest.java">
+            <metrics coveredelements="22" coveredconditionals="0" complexity="5" loc="72" coveredmethods="5" methods="5" elements="22" classes="1" ncloc="57" statements="17" conditionals="0" coveredstatements="17"/>
+            <class name="AmazonClientTest">
+               <metrics coveredelements="22" complexity="5" methods="5" testruns="3" statements="17" coveredconditionals="0" coveredmethods="5" elements="22" testfailures="0" testduration="0.003" conditionals="0" coveredstatements="17" testpasses="3"/>
+            </class>
+            <line complexity="1" visibility="package" signature="setUp() : void" num="33" count="3" type="method"/>
+            <line num="35" count="3" type="stmt"/>
+            <line complexity="1" visibility="package" signature="tearDown() : void" num="38" count="3" type="method"/>
+            <line complexity="1" visibility="public" signature="testToString() : void" num="42" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="44" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="uploadToS3() : void" num="47" testsuccess="true" count="1" testduration="0.001" type="method"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="51" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="56" count="1" type="stmt"/>
+            <line complexity="1" visibility="public" signature="uploadToS3ThrowException() : void" num="59" testsuccess="true" count="1" testduration="0.002" type="method"/>
+            <line num="61" count="1" type="stmt"/>
+            <line num="62" count="1" type="stmt"/>
+            <line num="63" count="1" type="stmt"/>
+            <line num="65" count="1" type="stmt"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/test/java/com/ihealth/demo/CcApplicationTests.java" name="CcApplicationTests.java">
+            <metrics coveredelements="2" coveredconditionals="0" complexity="1" loc="12" coveredmethods="1" methods="1" elements="2" classes="1" ncloc="10" statements="1" conditionals="0" coveredstatements="1"/>
+            <class name="CcApplicationTests">
+               <metrics coveredelements="2" complexity="1" methods="1" testruns="1" statements="1" coveredconditionals="0" coveredmethods="1" elements="2" testfailures="0" testduration="0.738" conditionals="0" coveredstatements="1" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="main() : void" num="8" testsuccess="true" count="1" testduration="0.738" type="method"/>
+            <line num="10" count="1" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/test/java/com/ihealth/demo/MainControllerUnitTest.java" name="MainControllerUnitTest.java">
+            <metrics coveredelements="36" coveredconditionals="0" complexity="6" loc="109" coveredmethods="5" methods="5" elements="37" classes="1" ncloc="91" statements="32" conditionals="0" coveredstatements="31"/>
+            <class name="MainControllerUnitTest">
+               <metrics coveredelements="36" complexity="6" methods="5" testruns="3" statements="32" coveredconditionals="0" coveredmethods="5" elements="37" testfailures="0" testduration="0.048" conditionals="0" coveredstatements="31" testpasses="3"/>
+            </class>
+            <line complexity="1" visibility="package" signature="setUp() : void" num="33" count="3" type="method"/>
+            <line num="35" count="3" type="stmt"/>
+            <line complexity="1" visibility="package" signature="tearDown() : void" num="38" count="3" type="method"/>
+            <line complexity="1" visibility="package" signature="getAllProjects() : void" num="54" testsuccess="true" count="1" testduration="0.01" type="method"/>
+            <line num="56" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="58" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+            <line num="60" count="1" type="stmt"/>
+            <line num="61" count="1" type="stmt"/>
+            <line complexity="1" visibility="package" signature="getCommitsByProjectName() : void" num="64" testsuccess="true" count="1" testduration="0.0" type="method"/>
+            <line num="66" count="1" type="stmt"/>
+            <line num="67" count="1" type="stmt"/>
+            <line num="68" count="1" type="stmt"/>
+            <line num="69" count="1" type="stmt"/>
+            <line num="70" count="1" type="stmt"/>
+            <line num="71" count="1" type="stmt"/>
+            <line complexity="2" visibility="package" signature="analyseCoverage() : void" num="74" testsuccess="true" count="1" testduration="0.038" type="method"/>
+            <line num="77" count="1" type="stmt"/>
+            <line num="78" count="1" type="stmt"/>
+            <line num="79" count="1" type="stmt"/>
+            <line num="80" count="1" type="stmt"/>
+            <line num="81" count="1" type="stmt"/>
+            <line num="82" count="1" type="stmt"/>
+            <line num="83" count="1" type="stmt"/>
+            <line num="85" count="0" type="stmt"/>
+            <line num="87" count="1" type="stmt"/>
+            <line num="89" count="1" type="stmt"/>
+            <line num="90" count="1" type="stmt"/>
+            <line num="91" count="1" type="stmt"/>
+            <line num="92" count="1" type="stmt"/>
+            <line num="94" count="1" type="stmt"/>
+            <line num="95" count="1" type="stmt"/>
+            <line num="96" count="1" type="stmt"/>
+            <line num="97" count="1" type="stmt"/>
+            <line num="99" count="1" type="stmt"/>
+            <line num="107" count="1" type="stmt"/>
+         </file>
+         <file path="/Users/sagegu/IdeaProjects/ihealth_cc/src/test/java/com/ihealth/demo/RequestTest.java" name="RequestTest.java">
+            <metrics coveredelements="11" coveredconditionals="0" complexity="1" loc="68" coveredmethods="1" methods="1" elements="11" classes="1" ncloc="55" statements="10" conditionals="0" coveredstatements="10"/>
+            <class name="RequestTest">
+               <metrics coveredelements="11" complexity="1" methods="1" testruns="1" statements="10" coveredconditionals="0" coveredmethods="1" elements="11" testfailures="0" testduration="0.106" conditionals="0" coveredstatements="10" testpasses="1"/>
+            </class>
+            <line complexity="1" visibility="public" signature="getAllProjects() : void" num="45" testsuccess="true" count="1" testduration="0.106" type="method"/>
+            <line num="47" count="1" type="stmt"/>
+            <line num="48" count="1" type="stmt"/>
+            <line num="49" count="1" type="stmt"/>
+            <line num="50" count="1" type="stmt"/>
+            <line num="52" count="1" type="stmt"/>
+            <line num="53" count="1" type="stmt"/>
+            <line num="54" count="1" type="stmt"/>
+            <line num="55" count="1" type="stmt"/>
+            <line num="57" count="1" type="stmt"/>
+            <line num="59" count="1" type="stmt"/>
+         </file>
+      </package>
+   </testproject>
+</coverage>

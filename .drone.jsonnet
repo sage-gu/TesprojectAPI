@@ -41,7 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.49",
+    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.56",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -64,6 +64,7 @@ local coverage(name, tag, when) = {
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
       COVERAGE_RESULT_PATH: "clover.xml",  
+      DIRECTORY: "site/clover",  
       REPORT_PATH: "report.txt"
     }, 
     when: when
