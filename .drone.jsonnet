@@ -94,7 +94,6 @@ local pipeline(branch, namespace, tag, instance) = {
     type: 'kubernetes',
     name: 'coveragePipeline',
     steps: [
-        publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
         coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
         comments("1comment", tag, {instance: instance, event: ["pull_request"]})
