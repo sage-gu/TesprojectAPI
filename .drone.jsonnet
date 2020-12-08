@@ -29,7 +29,7 @@ local outputReport(name, tag, when) = {
     }, 
     commands: [
         "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
-        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
+        "echo url: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
         "pwd; ls -l",
         "cat /drone/src/report.txt"
     ],
