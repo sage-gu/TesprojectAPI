@@ -65,7 +65,7 @@ local coverage(name, tag, when) = {
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
       COVERAGE_RESULT_PATH: "clover.xml",  
       DIRECTORY: "/drone/src/site/clover",
-      REPORT_PATH: "report.txt"
+      REPORT_PATH: "report.txt" 
     }, 
     when: when
 };
