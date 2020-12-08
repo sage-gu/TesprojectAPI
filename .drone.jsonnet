@@ -64,7 +64,7 @@ local coverage(name, tag, when) = {
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
       COVERAGE_RESULT_PATH: "clover.xml",  
-      DIRECTORY: "/drone/src/site/clover",
+      DIRECTORY: "/drone/src",
       REPORT_PATH: "report.txt" 
     }, 
     when: when
