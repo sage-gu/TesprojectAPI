@@ -28,7 +28,7 @@ local outputReport(name, tag, when) = {
       REPORT_PATH: "report.txt"
     }, 
     commands: [
-        "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
+        "echo  $PROJECT_NAME -  $REPORT_PATH",
         "echo url: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
         "pwd; ls -l",
         "cat /drone/src/report.txt"
