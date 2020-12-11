@@ -24,7 +24,7 @@ local outputReport(name, tag, when) = {
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      COVERAGE_RESULT_PATH: "small_clover.xml",  
+      COVERAGE_RESULT_PATH: "coverage/clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
     commands: [
@@ -41,7 +41,8 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.57",
+    image: "ihealthlabs/report_generator",
+    // image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.57",
     settings:{
         repo: "sage-gu/TesprojectAPI",
         tags:[
@@ -63,12 +64,13 @@ local coverage(name, tag, when) = {
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      COVERAGE_RESULT_PATH: "clover.xml",  
+      COVERAGE_RESULT_PATH: "coverage/clover.xml",  
       DIRECTORY: "/drone/src",
       REPORT_PATH: "report.txt" 
     }, 
     commands: [
          "pwd; ls -l",
+        //  "sh upload.sh",
     ],
     when: when
 };
