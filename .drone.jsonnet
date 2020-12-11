@@ -41,7 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator",
+    image: "ihealthlabs/report_generator:1.0.59",
     // image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.57",
     settings:{
         repo: "sage-gu/TesprojectAPI",
