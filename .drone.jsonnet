@@ -68,10 +68,10 @@ local coverage(name, tag, when) = {
       DIRECTORY: "/drone/src",
       REPORT_PATH: "report.txt" 
     }, 
-    // commands: [
-    //      "pwd; ls -l",
-    //     //  "sh upload.sh",
-    // ],
+    commands: [
+         "pwd; ls -l"
+        //  "sh upload.sh",
+    ],
     when: when
 };
 
