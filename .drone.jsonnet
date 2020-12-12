@@ -67,7 +67,7 @@ local coverage(name, tag, when) = {
       COVERAGE_XML_PATH: "coverage/clover.xml",  
       SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" ,
-    } 
+    }, 
     // commands: [
     //      "pwd; ls -l"
     //     //  "sh upload.sh",
