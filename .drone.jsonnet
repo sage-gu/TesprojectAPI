@@ -73,7 +73,7 @@ local coverage(name, tag, when) = {
     //      "pwd; ls -l",
     //      "ls -l /",
     //      "sh /usr/src/app/upload.sh",
-    // ],
+    // ], 
     when: when
 };
 
