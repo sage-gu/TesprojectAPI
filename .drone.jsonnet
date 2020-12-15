@@ -69,8 +69,9 @@ local coverage(name, tag, when) = {
       REPORT_PATH: "report.txt" ,
     }, 
     commands: [
-         "pwd; ls -l"
-        //  "sh upload.sh",
+        "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
+         "pwd; ls -l"，
+         "sh upload.sh",
     ],
     when: when
 };
