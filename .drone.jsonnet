@@ -70,7 +70,7 @@ local coverage(name, tag, when) = {
     }, 
     commands: [
         "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
-         "pwd; ls -l"，
+         "pwd; ls -l",
          "sh upload.sh",
     ],
     when: when
