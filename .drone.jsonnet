@@ -41,7 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator:0.7",
+    image: "ihealthlabs/report_generator:0.8",
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
@@ -49,7 +49,7 @@ local coverage(name, tag, when) = {
       PROJECT_NAME: "${DRONE_REPO}",
       BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
-      BASE_COMMIT_ID: "${DRONE_COMMIT}",
+      // BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
       COVERAGE_XML_PATH: "coverage/clover.xml",  
       SOURCE_CODE: "/drone/src",
