@@ -41,21 +41,14 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator:0.9", 
+    image: "ihealthlabs/report_generator:v1.0.1", 
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
       },
       COVERAGE_XML_PATH: "coverage/clover.xml",  
-      // SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" , 
     },
-    commands: [
-        "echo  $PROJECT_NAME -  $REPORT_PATH",
-        "echo url: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
-        "pwd; ls -l",
-        "sh /usr/src/app/upload.sh"
-    ],
     when: when
 };
 
@@ -68,8 +61,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        //PLUGIN_MESSAGE: "[ccc](https://us.jenkins.ihealthnext.com/job/sharecare-gql-unit-tests/clover/cron/system_msg/_utils.js.html)"//"
-        PLUGIN_MESSAGE: "/drone/src/report.txt",//message 
+        PLUGIN_MESSAGE: "/drone/src/report.txt",
     },
     depends_on: [
       "coverage",
