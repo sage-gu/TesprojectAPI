@@ -41,7 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator:0.8",
+    image: "ihealthlabs/report_generator:0.8", 
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
