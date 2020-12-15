@@ -41,20 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator:v1.0.66",
-    // image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.57",
-    // settings:{
-    //     repo: "sage-gu/TesprojectAPI",
-    //     tags:[
-    //         tag
-    //       ],
-    //     username:{
-    //       from_secret: "DOCKER_USERNAME",
-    //     },
-    //     password:{
-    //       from_secret: "DOCKER_PASSWORD",
-    //     }, 
-    // },
+    image: "ihealthlabs/report_generator:0.7",
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
@@ -67,13 +54,7 @@ local coverage(name, tag, when) = {
       COVERAGE_XML_PATH: "coverage/clover.xml",  
       SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" , 
-    },  
-    // commands: [
-    //     "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
-    //      "pwd; ls -l",
-    //      "ls -l /",
-    //      "sh /usr/src/app/upload.sh",
-    // ], 
+    },
     when: when
 };
 
