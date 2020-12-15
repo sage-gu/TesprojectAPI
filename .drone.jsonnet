@@ -67,7 +67,7 @@ local coverage(name, tag, when) = {
       COVERAGE_XML_PATH: "/drone/src/coverage/clover.xml",  
       SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" , 
-    }, 
+    },  
     // commands: [
     //     "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
     //      "pwd; ls -l",
