@@ -61,7 +61,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/report.txt",
+        PLUGIN_MESSAGE: "report.txt",
     },
     depends_on: [
       "coverage",
