@@ -41,7 +41,7 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/report_generator:0.7",
+    image: "ihealthlabs/report_generator:v1.0.66",
     // image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.57",
     settings:{
         repo: "sage-gu/TesprojectAPI",
@@ -68,12 +68,12 @@ local coverage(name, tag, when) = {
       SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" ,
     }, 
-    commands: [
-        "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
-         "pwd; ls -l",
-         "ls -l /",
-         "sh /usr/src/app/upload.sh",
-    ],
+    // commands: [
+    //     "echo  $PROJECT_NAME -  $REPORT_PATH - $COVERAGE_XML_PATH - $SOURCE_CODE",
+    //      "pwd; ls -l",
+    //      "ls -l /",
+    //      "sh /usr/src/app/upload.sh",
+    // ],
     when: when
 };
 
