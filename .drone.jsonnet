@@ -55,6 +55,12 @@ local coverage(name, tag, when) = {
       SOURCE_CODE: "/drone/src",
       REPORT_PATH: "report.txt" , 
     },
+    commands: [
+        "echo  $PROJECT_NAME -  $REPORT_PATH",
+        "echo url: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
+        "pwd; ls -l",
+        "sh /usr/src/app/upload.sh"
+    ],
     when: when
 };
 
