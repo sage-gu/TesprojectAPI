@@ -85,7 +85,7 @@ local mongo(name, when) = {
     commands: [
             "mongo --host mongo --eval 'db.version();'",
             "date",
-            "sleep 5",
+            "sleep 15",
             ], 
     when: when
 };
@@ -114,7 +114,6 @@ local pipeline(branch, namespace, tag, instance) = {
             MONGO_INITDB_ROOT_PASSWORD: 'password',
             MONGO_INITDB_DATABASE: 'ShareCare'
         },
-        commands: ["--smallfiles"],  
       }
     ],
     // trigger:{
