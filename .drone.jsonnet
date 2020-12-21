@@ -69,15 +69,53 @@ local comments(name, message, when) = {
     ],
     when: when
 };
+local redis(name, when) = {
+    name: name,
+    image: "redis",
+    commands: [
+            "sleep 5",
+            "redis-cli -h localhost ping"
+            ], 
+    when: when
+};
 
+local mongo(name, when) = {
+    name: name,
+    image: "mongo:4",
+    commands: [
+            "mongo --host mongo --eval 'db.version();'",
+            "date",
+            "sleep 5",
+            ], 
+    when: when
+};
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
     name: 'coveragePipeline',
     steps: [
+        redis("ping-redis", {instance: instance, event: ["pull_request"]}),
+        mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
         coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
         comments("1comment", tag, {instance: instance, event: ["pull_request"]})
+    ],
+    services:[
+      {
+        name: "redis",
+        image: "redis"
+      },
+      {
+        name: 'mongo',
+        pull: 'if-not-exists',
+        image: 'mongo:4',
+        environment: {
+            MONGO_INITDB_ROOT_USERNAME: 'root',
+            MONGO_INITDB_ROOT_PASSWORD: 'password',
+            MONGO_INITDB_DATABASE: 'ShareCare'
+        },
+        commands: ["--smallfiles"],  
+      }
     ],
     // trigger:{
     //     branch: branch
