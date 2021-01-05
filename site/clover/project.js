@@ -1,0 +1,2 @@
+processClover (  {"children":["com/ihealth/demo/"],"name":"Clover database Sat Dec 5 2020 08:53:09 CST","stats":{"AvgMethodComplexity":1.6,"Complexity":64,"ErroneousTests":0,"FailingTests":0,"FilteredElements":0,"PassingTests":0,"PcErroneousTests":-1,"PcFailingTests":-1,"PcPassingTests":-1,"TestExecutionTime":0,"Tests":0,"TotalChildren":1,"TotalPercentageCovered":60.714287,"TotalStatements":156,"UncoveredElements":88},"title":"cc 0.0.4-SNAPSHOT"}
+ ); 

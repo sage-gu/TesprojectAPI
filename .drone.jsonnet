@@ -24,12 +24,12 @@ local outputReport(name, tag, when) = {
       COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
       BASE_COMMIT_ID: "${DRONE_COMMIT}",
       ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      COVERAGE_RESULT_PATH: "small_clover.xml",  
+      COVERAGE_RESULT_PATH: "coverage/clover.xml",  
       REPORT_PATH: "report.txt"
     }, 
     commands: [
-        "echo REPORT_PATH: ${REPORT_PATH} -  $REPORT_PATH",
-        "echo REPORT_PATH: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $REPORT_PATH",
+        "echo  $PROJECT_NAME -  $REPORT_PATH",
+        "echo url: ${COVERAGE_COLLECTOR_UPLOAD_URL} -  $COVERAGE_COLLECTOR_UPLOAD_URL",
         "pwd; ls -l",
         "cat /drone/src/report.txt"
     ],
@@ -41,31 +41,14 @@ local outputReport(name, tag, when) = {
 
 local coverage(name, tag, when) = {
     name: name,
-    image: "ihealthlabs/coverage_collector_docker_plugin:v1.0.49",
-    settings:{
-        repo: "sage-gu/TesprojectAPI",
-        tags:[
-            tag
-          ],
-        username:{
-          from_secret: "DOCKER_USERNAME",
-        },
-        password:{
-          from_secret: "DOCKER_PASSWORD",
-        }, 
-    },
+    image: "ihealthlabs/coverage_plugin:v1.0.70", 
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
       },
-      PROJECT_NAME: "${DRONE_REPO}",
-      BASE_BRANCH: "${DRONE_SOURCE_BRANCH}",
-      COMPARING_BRANCH: "${DRONE_TARGET_BRANCH}",
-      BASE_COMMIT_ID: "${DRONE_COMMIT}",
-      ACTION: "${DRONE_BUILD_EVENT} + ${DRONE_BUILD_ACTION}",
-      COVERAGE_RESULT_PATH: "clover.xml",  
-      REPORT_PATH: "report.txt"
-    }, 
+      COVERAGE_XML_PATH: "coverage/clover.xml",  
+      REPORT_PATH: "report.txt" , 
+    },
     when: when
 };
 
@@ -78,7 +61,7 @@ local comments(name, message, when) = {
         {
             from_secret: "APIKEY"
         },
-        PLUGIN_MESSAGE: "/drone/src/report.txt",//message
+        PLUGIN_MESSAGE: "report.txt",
     },
     depends_on: [
       "coverage",
@@ -86,16 +69,52 @@ local comments(name, message, when) = {
     ],
     when: when
 };
+local redis(name, when) = {
+    name: name,
+    image: "redis",
+    commands: [
+            "sleep 5",
+            "redis-cli -h localhost ping"
+            ], 
+    when: when
+};
 
+local mongo(name, when) = {
+    name: name,
+    image: "mongo:4",
+    commands: [
+            "mongo --host mongo --eval 'db.version();'",
+            "date",
+            "sleep 15",
+            ], 
+    when: when
+};
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
     name: 'coveragePipeline',
     steps: [
-        // publish(branch+"-publish", tag, {instance: instance, event: ["push"]}),
+        redis("ping-redis", {instance: instance, event: ["pull_request"]}),
+        mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
         coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
         outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
         comments("1comment", tag, {instance: instance, event: ["pull_request"]})
+    ],
+    services:[
+      {
+        name: "redis",
+        image: "redis"
+      },
+      {
+        name: 'mongo',
+        pull: 'if-not-exists',
+        image: 'mongo:4',
+        environment: {
+            MONGO_INITDB_ROOT_USERNAME: 'root',
+            MONGO_INITDB_ROOT_PASSWORD: 'password',
+            MONGO_INITDB_DATABASE: 'ShareCare'
+        },
+      }
     ],
     // trigger:{
     //     branch: branch
