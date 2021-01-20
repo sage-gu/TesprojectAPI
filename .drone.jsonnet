@@ -97,13 +97,13 @@ local apiReportText( ) = {
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
       },
-      XMLS:{
-        "Unit Test": "UI/clover.xml",
-        "API Test": "IT/clover.xml",
-      },
-      FILES:{
-        "Project Document": "target/site",
-      },
+      // XMLS:{
+      //   "Unit Test": "UI/clover.xml",
+      //   "API Test": "IT/clover.xml",
+      // },
+      // FILES:{
+      //   "Project Document": "target/site",
+      // },
       REPORT_PATH: "report.txt", 
     }, 
     commands: [
