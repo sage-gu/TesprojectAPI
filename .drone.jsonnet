@@ -91,7 +91,7 @@ local mongo(name, when) = {
 };
 
 local apiReportText( ) = {
-    name: name,
+    name: "name",
     image: "busybox:latest",
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
@@ -119,28 +119,29 @@ local pipeline(branch, namespace, tag, instance) = {
     type: 'kubernetes',
     name: 'coveragePipeline',
     steps: [ 
-        redis("ping-redis", {instance: instance, event: ["pull_request"]}),
-        mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
-        coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
-        outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
-        comments("1comment", tag, {instance: instance, event: ["pull_request"]})
+      apiReportText()
+        // redis("ping-redis", {instance: instance, event: ["pull_request"]}),
+        // mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
+        // coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
+        // outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
+        // comments("1comment", tag, {instance: instance, event: ["pull_request"]})
     ],
-    services:[
-      {
-        name: "redis",
-        image: "redis"
-      },
-      {
-        name: 'mongo',
-        pull: 'if-not-exists',
-        image: 'mongo:4',
-        environment: {
-            MONGO_INITDB_ROOT_USERNAME: 'root',
-            MONGO_INITDB_ROOT_PASSWORD: 'password',
-            MONGO_INITDB_DATABASE: 'ShareCare'
-        },
-      }
-    ],
+    // services:[
+    //   {
+    //     name: "redis",
+    //     image: "redis"
+    //   },
+    //   {
+    //     name: 'mongo',
+    //     pull: 'if-not-exists',
+    //     image: 'mongo:4',
+    //     environment: {
+    //         MONGO_INITDB_ROOT_USERNAME: 'root',
+    //         MONGO_INITDB_ROOT_PASSWORD: 'password',
+    //         MONGO_INITDB_DATABASE: 'ShareCare'
+    //     },
+    //   }
+    // ],
     // trigger:{
     //     branch: branch
     // },
@@ -169,7 +170,7 @@ local prod_drone = ["prod-drone.ihealth-eng.com"];
 
 [
     // define dev pipeline
-    pipeline(branch="dev",
+    pipeline(branch="test",
              namespace="sage",
              tag="${DRONE_BRANCH}-${DRONE_COMMIT:0:4}",
              instance=dev_drone)
