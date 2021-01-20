@@ -96,8 +96,7 @@ local apiReportText( ) = {
     commands: [
             "echo $XMLS",
             "echo $FILES",
-            "echo \"${XMLS[Unit Test]}\"",
-    ],
+     ],
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
