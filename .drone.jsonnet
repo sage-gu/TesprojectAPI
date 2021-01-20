@@ -91,7 +91,7 @@ local mongo(name, when) = {
 };
 
 local apiReportText( ) = {
-    name: "name",
+    name: name,
     image: "busybox:latest",
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
@@ -118,9 +118,12 @@ local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
     name: 'coveragePipeline',
-    steps: [
-      apiReportText()
-         
+    steps: [ 
+        redis("ping-redis", {instance: instance, event: ["pull_request"]}),
+        mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
+        coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
+        outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
+        comments("1comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     services:[
       {
