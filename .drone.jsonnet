@@ -97,7 +97,7 @@ local apiReportText( ) = {
             "echo $XMLS",
             "echo $FILES",
             "echo $XML",
-            "echo ${XML['Unit Test']}",
+            "b = XML['Unit Test']; echo $b",
             "echo $COVERAGE_COLLECTOR_UPLOAD_URL",
     ],
     environment:{
