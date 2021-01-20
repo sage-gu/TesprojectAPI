@@ -96,8 +96,8 @@ local apiReportText( ) = {
     commands: [
             "echo $XMLS",
             "echo $FILES",
-            "echo ${FILES}",
-            // "echo ${XMLS[Unit Test]}",
+            "echo $XML",
+            "echo ${XML[Unit Test]}",
             "echo $COVERAGE_COLLECTOR_UPLOAD_URL",
     ],
     environment:{
@@ -111,7 +111,7 @@ local apiReportText( ) = {
       FILES:{
         "Project Document": "target/site",
       },
-      REPORT_PATH: "report.txt", 
+      XML: "['Unit Test']='UI/clover.xml' ['API Test']='API/clover.xml' ", 
     }
 };
 
