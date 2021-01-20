@@ -111,7 +111,7 @@ local apiReportText( ) = {
       FILES:{
         "Project Document": "target/site",
       },
-      XML: "['Unit Test']='UI/clover.xml' ['API Test']='API/clover.xml' ", 
+      XML: "['UnitTest']='UI/clover.xml' ['API Test']='API/clover.xml' ", 
       FILEs: "['Project Document']='target/site' ['Others']='target/site' ", 
     }
 };
