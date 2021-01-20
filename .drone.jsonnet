@@ -93,6 +93,11 @@ local mongo(name, when) = {
 local apiReportText( ) = {
     name: "name",
     image: "busybox:latest",
+    commands: [
+            "echo $XMLS",
+            "echo $FILES",
+            "echo \"${XMLS[Unit Test]}\"",
+    ],
     environment:{
       COVERAGE_COLLECTOR_UPLOAD_URL: {
         from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
@@ -105,12 +110,7 @@ local apiReportText( ) = {
       //   "Project Document": "target/site",
       // },
       REPORT_PATH: "report.txt", 
-    }, 
-    // commands: [
-    //         "echo $XMLS",
-    //         "echo $FILES",
-    //         "echo \"${XMLS[Unit Test]}\"",
-    //  ]  
+    }
 };
 
 
