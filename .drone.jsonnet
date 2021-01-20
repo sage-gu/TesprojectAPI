@@ -97,7 +97,7 @@ local apiReportText( ) = {
             "echo $XMLS",
             "echo $FILES",
             "echo $XML",
-            "echo $XML[Unit Test]",
+            "echo ${XML['Unit Test']}",
             "echo $COVERAGE_COLLECTOR_UPLOAD_URL",
     ],
     environment:{
@@ -112,6 +112,7 @@ local apiReportText( ) = {
         "Project Document": "target/site",
       },
       XML: "['Unit Test']='UI/clover.xml' ['API Test']='API/clover.xml' ", 
+      FILEs: "['Project Document']='target/site' ['Others']='target/site' ", 
     }
 };
 
