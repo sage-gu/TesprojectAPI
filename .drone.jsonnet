@@ -106,11 +106,11 @@ local apiReportText( ) = {
       // },
       REPORT_PATH: "report.txt", 
     }, 
-    commands: [
-            "echo $XMLS",
-            "echo $FILES",
-            "echo \"${XMLS[Unit Test]}\"",
-     ]  
+    // commands: [
+    //         "echo $XMLS",
+    //         "echo $FILES",
+    //         "echo \"${XMLS[Unit Test]}\"",
+    //  ]  
 };
 
 
