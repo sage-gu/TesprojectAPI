@@ -89,16 +89,42 @@ local mongo(name, when) = {
             ], 
     when: when
 };
+
+local apiReportText( ) = {
+    name: "name",
+    image: "busybox:latest",
+    environment:{
+      COVERAGE_COLLECTOR_UPLOAD_URL: {
+        from_secret: "COVERAGE_COLLECTOR_UPLOAD_URL",
+      },
+      XMLS:{
+        "Unit Test": "UI/clover.xml",
+        "API Test": "IT/clover.xml",
+      },
+      FILES:{
+        "Project Document": "target/site",
+      },
+      REPORT_PATH: "report.txt", 
+    }, 
+    commands: [
+            "echo $XMLS",
+            "echo $FILES",
+            "echo \"${XMLS[Unit Test]}\"",
+     ]  
+};
+
+
 local pipeline(branch, namespace, tag, instance) = {
     kind: 'pipeline',
     type: 'kubernetes',
     name: 'coveragePipeline',
     steps: [
-        redis("ping-redis", {instance: instance, event: ["pull_request"]}),
-        mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
-        coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
-        outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
-        comments("1comment", tag, {instance: instance, event: ["pull_request"]})
+      apiReportText()
+        // redis("ping-redis", {instance: instance, event: ["pull_request"]}),
+        // mongo("mongo-return-version", {instance: instance, event: ["pull_request"]}),
+        // coverage("coverage", tag, {instance: instance, event: ["pull_request"]}),
+        // outputReport("rmOldReport", tag, {instance: instance, event: ["pull_request"]}),
+        // comments("1comment", tag, {instance: instance, event: ["pull_request"]})
     ],
     services:[
       {
